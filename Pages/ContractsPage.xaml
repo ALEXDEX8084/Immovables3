@@ -1,0 +1,34 @@
+﻿<Page x:Class="Immovables.Pages.ContractsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Immovables.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ContractsPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+        </StackPanel>
+        <ListView Grid.Column="1" Name="ListContracts">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Employee Information">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path = Buildings.Adress}" Header="Адрес" Width="300"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Buildings.RentPrice}" Width="120">
+                        <GridViewColumnHeader>Цена аренды (руб.)</GridViewColumnHeader>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Buildings.ApartmentArea}" Header="Площадь(м3)" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Employees.SurName}" Header="Сотрудник" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Owners.SurName}" Header="Собственник" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Clients.SurName}" Header="Арендатор" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=BeginDate}" Header="Дата начала аренды" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=EndDate}" Header="Дата окончания аренды" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>
