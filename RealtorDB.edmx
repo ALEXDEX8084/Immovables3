@@ -15,8 +15,7 @@
           <Property Name="ApartmentArea" Type="float" Nullable="false" />
           <Property Name="IDOwner" Type="int" Nullable="false" />
           <Property Name="RentPrice" Type="money" Nullable="false" />
-          <Property Name="Free" Type="tinyint" Nullable="false" />
-          <Property Name="BuildingImage" Type="image" />
+          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Clients">
           <Key>
@@ -34,10 +33,10 @@
             <PropertyRef Name="IDContract" />
           </Key>
           <Property Name="IDContract" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IDBuilding" Type="int" Nullable="false" />
-          <Property Name="IdEmployee" Type="int" Nullable="false" />
-          <Property Name="IDClient" Type="int" Nullable="false" />
-          <Property Name="BeginDate" Type="date" />
+          <Property Name="IDBuilding" Type="int" />
+          <Property Name="IDEmployee" Type="int" />
+          <Property Name="IDClient" Type="int" />
+          <Property Name="BeginDate" Type="date" Nullable="false" />
           <Property Name="EndDate" Type="date" />
         </EntityType>
         <EntityType Name="Employees">
@@ -49,7 +48,6 @@
           <Property Name="FirstName" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="Patron" Type="nchar" MaxLength="50" />
           <Property Name="PhoneNumber" Type="nchar" MaxLength="20" Nullable="false" />
-          <Property Name="IDUser" Type="int" />
         </EntityType>
         <EntityType Name="Owners">
           <Key>
@@ -72,14 +70,6 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="IDUser" />
-          </Key>
-          <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="nchar" MaxLength="35" Nullable="false" />
-          <Property Name="Password" Type="nchar" MaxLength="25" Nullable="false" />
-        </EntityType>
         <Association Name="FK_Buildings_Owners">
           <End Role="Owners" Type="Self.Owners" Multiplicity="1" />
           <End Role="Buildings" Type="Self.Buildings" Multiplicity="*" />
@@ -93,7 +83,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Contracts_Buildings">
-          <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
           <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Buildings">
@@ -105,7 +95,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Contracts_Clients">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
           <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clients">
@@ -117,14 +107,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Contracts_Employees">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
           <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employees">
               <PropertyRef Name="IdEmployee" />
             </Principal>
             <Dependent Role="Contracts">
-              <PropertyRef Name="IdEmployee" />
+              <PropertyRef Name="IDEmployee" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -135,7 +125,6 @@
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Owners" EntityType="Self.Owners" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Buildings_Owners" Association="Self.FK_Buildings_Owners">
             <End Role="Owners" EntitySet="Owners" />
             <End Role="Buildings" EntitySet="Buildings" />
@@ -168,8 +157,7 @@
           <Property Name="ApartmentArea" Type="Double" Nullable="false" />
           <Property Name="IDOwner" Type="Int32" Nullable="false" />
           <Property Name="RentPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Free" Type="Byte" Nullable="false" />
-          <Property Name="BuildingImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Owner" Relationship="Self.FK_Buildings_Owners" FromRole="Buildings" ToRole="Owners" />
           <NavigationProperty Name="Contracts" Relationship="Self.FK_Contracts_Buildings" FromRole="Buildings" ToRole="Contracts" />
         </EntityType>
@@ -190,10 +178,10 @@
             <PropertyRef Name="IDContract" />
           </Key>
           <Property Name="IDContract" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDBuilding" Type="Int32" Nullable="false" />
-          <Property Name="IdEmployee" Type="Int32" Nullable="false" />
-          <Property Name="IDClient" Type="Int32" Nullable="false" />
-          <Property Name="BeginDate" Type="DateTime" Precision="0" />
+          <Property Name="IDBuilding" Type="Int32" />
+          <Property Name="IDEmployee" Type="Int32" />
+          <Property Name="IDClient" Type="Int32" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Building" Relationship="Self.FK_Contracts_Buildings" FromRole="Contracts" ToRole="Buildings" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Contracts_Clients" FromRole="Contracts" ToRole="Clients" />
@@ -208,7 +196,6 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Patron" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="IDUser" Type="Int32" />
           <NavigationProperty Name="Contracts" Relationship="Self.FK_Contracts_Employees" FromRole="Employees" ToRole="Contracts" />
         </EntityType>
         <EntityType Name="Owner">
@@ -233,14 +220,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="IDUser" />
-          </Key>
-          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="35" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
-        </EntityType>
         <Association Name="FK_Buildings_Owners">
           <End Role="Owners" Type="Self.Owner" Multiplicity="1" />
           <End Role="Buildings" Type="Self.Building" Multiplicity="*" />
@@ -254,7 +233,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Contracts_Buildings">
-          <End Role="Buildings" Type="Self.Building" Multiplicity="1" />
+          <End Role="Buildings" Type="Self.Building" Multiplicity="0..1" />
           <End Role="Contracts" Type="Self.Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Buildings">
@@ -266,7 +245,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Contracts_Clients">
-          <End Role="Clients" Type="Self.Client" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Client" Multiplicity="0..1" />
           <End Role="Contracts" Type="Self.Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clients">
@@ -278,14 +257,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Contracts_Employees">
-          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Contracts" Type="Self.Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employees">
               <PropertyRef Name="IdEmployee" />
             </Principal>
             <Dependent Role="Contracts">
-              <PropertyRef Name="IdEmployee" />
+              <PropertyRef Name="IDEmployee" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -296,7 +275,6 @@
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Owners" EntityType="Self.Owner" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_Buildings_Owners" Association="Self.FK_Buildings_Owners">
             <End Role="Owners" EntitySet="Owners" />
             <End Role="Buildings" EntitySet="Buildings" />
@@ -329,8 +307,7 @@
                 <ScalarProperty Name="ApartmentArea" ColumnName="ApartmentArea" />
                 <ScalarProperty Name="IDOwner" ColumnName="IDOwner" />
                 <ScalarProperty Name="RentPrice" ColumnName="RentPrice" />
-                <ScalarProperty Name="Free" ColumnName="Free" />
-                <ScalarProperty Name="BuildingImage" ColumnName="BuildingImage" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -351,7 +328,7 @@
               <MappingFragment StoreEntitySet="Contracts">
                 <ScalarProperty Name="IDContract" ColumnName="IDContract" />
                 <ScalarProperty Name="IDBuilding" ColumnName="IDBuilding" />
-                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="IDEmployee" ColumnName="IDEmployee" />
                 <ScalarProperty Name="IDClient" ColumnName="IDClient" />
                 <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
@@ -366,7 +343,6 @@
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Patron" ColumnName="Patron" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -390,15 +366,6 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="RealtorModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

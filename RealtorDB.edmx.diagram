@@ -4,14 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3ba3fc52ab0d434798bc5dada8ae4d9a" Name="Diagram1">
+      <Diagram DiagramId="c5616f4404c14eabb7a2f0f16c2758c9" Name="Diagram1">
         <EntityTypeShape EntityType="RealtorModel.Building" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="RealtorModel.Client" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RealtorModel.Contract" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealtorModel.Contract" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="RealtorModel.Employee" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="RealtorModel.Owner" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealtorModel.Owner" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RealtorModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RealtorModel.User" Width="1.5" PointX="8.75" PointY="5.875" IsExpanded="true" />
         <AssociationConnector Association="RealtorModel.FK_Buildings_Owners" ManuallyRouted="false" />
         <AssociationConnector Association="RealtorModel.FK_Contracts_Buildings" ManuallyRouted="false" />
         <AssociationConnector Association="RealtorModel.FK_Contracts_Clients" ManuallyRouted="false" />

@@ -25,7 +25,6 @@ namespace Immovables
         public string FirstName { get; set; }
         public string Patron { get; set; }
         public string PhoneNumber { get; set; }
-        public Nullable<int> IDUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }

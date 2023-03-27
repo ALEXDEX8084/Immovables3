@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon11.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -82,6 +85,24 @@
     <Compile Include="Owner.cs">
       <DependentUpon>RealtorDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\BuildingDetailsPage.xaml.cs">
+      <DependentUpon>BuildingDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BuildingsAddEditPage.xaml.cs">
+      <DependentUpon>BuildingsAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClientsAddEditPage.xaml.cs">
+      <DependentUpon>ClientsAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ContractsAddEditPage.xaml.cs">
+      <DependentUpon>ContractsAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmployeeAddEditPage.xaml.cs">
+      <DependentUpon>EmployeeAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OwnersAddEditPage.xaml.cs">
+      <DependentUpon>OwnersAddEditPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RealtorDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,9 +121,6 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>RealtorDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>RealtorDB.tt</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -116,7 +134,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\BuildingDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BuildingsAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\BuildingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClientsAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,7 +154,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ContractsAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ContractsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EmployeeAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,19 +170,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\LoginPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\MenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\OwnersPage.xaml">
+    <Page Include="Pages\OwnersAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UsersPage.xaml">
+    <Page Include="Pages\OwnersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,17 +196,11 @@
     <Compile Include="Pages\EmployeesPage.xaml.cs">
       <DependentUpon>EmployeesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\OwnersPage.xaml.cs">
       <DependentUpon>OwnersPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\UsersPage.xaml.cs">
-      <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -208,12 +236,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\framelog.jpg" />
+    <Resource Include="Images\LoginBackGround.jpg" />
+    <Resource Include="Images\color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FbD5WU6GrUA.jpg" />
+    <Resource Include="Images\4124214.png" />
+    <Resource Include="Images\11222.jpg" />
+    <Resource Include="Images\2685941.jpg" />
+    <Resource Include="Images\3b2.jpg" />
+    <Resource Include="Images\House.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon11.ico" />
     <Content Include="RealtorDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RealtorDB.edmx</DependentUpon>

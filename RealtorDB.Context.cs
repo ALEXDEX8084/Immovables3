@@ -12,7 +12,7 @@ namespace Immovables
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class RealtorEntities : DbContext
     {
         private static RealtorEntities _context;
@@ -20,12 +20,11 @@ namespace Immovables
             : base("name=RealtorEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
         public static RealtorEntities GetContext()
         {
             if (_context == null)
@@ -33,13 +32,11 @@ namespace Immovables
             return _context;
         }
 
-
         public virtual DbSet<Building> Buildings { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Owner> Owners { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<User> Users { get; set; }
     }
 }

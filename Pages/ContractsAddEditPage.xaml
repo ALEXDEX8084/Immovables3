@@ -1,0 +1,65 @@
+﻿<Page x:Class="Immovables.Pages.ContractsAddEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Immovables.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ContractsAddEditPage">
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/3b2.jpg" Opacity="0.7"  Stretch="Fill"></ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Name="Gridedit"  Grid.Column="0">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/Images/color.png" Opacity="0.7"  Stretch="Fill"></ImageBrush>
+            </StackPanel.Background>
+            <StackPanel>
+                <TextBlock Text="Адрес здания:" Margin="50, 50, 0, 0"/>
+                <ComboBox x:Name="CmbFiltrAdress"
+                      Height="25"
+                      HorizontalAlignment="Left"
+                      Width="297"
+                      SelectionChanged="CmbFiltrAdress_SelectionChanged"
+                      SelectedValue="{Binding IDBuilding}" Margin="70,10,0,10"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Сотрудник:" Margin="50, 0, 0, 0"/>
+                <ComboBox x:Name="CmbFiltrEmployee"
+                      Height="25"
+                      HorizontalAlignment="Left"
+                      Width="297"
+                      SelectionChanged="CmbFiltrEmployee_SelectionChanged"
+                      SelectedValue="{Binding IDEmployee}" Margin="70,10,0,10"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Арендатор:" Margin="50, 0, 0, 0"/>
+                <ComboBox x:Name="CmbFiltrClient"
+                      Height="25"
+                      HorizontalAlignment="Left"
+                      Width="297"
+                      SelectionChanged="CmbFiltrClient_SelectionChanged"
+                      SelectedValue="{Binding IDClient}" Margin="70,10,0,10"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Дата начала аренды:" Margin="50, 0, 0, 0"/>
+                <DatePicker Name="datePicker1" HorizontalAlignment="Left" Width="297"  SelectedDate="{Binding BeginDate}" IsDropDownOpen="False" SelectedDateFormat="Short"  Margin="70,10,0,10"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Дата окончания аренды:" Margin="50, 0, 0, 0"/>
+                <DatePicker Name="datePicker2" HorizontalAlignment="Left"  Width="297" SelectedDate="{Binding EndDate}" IsDropDownOpen="False" SelectedDateFormat="Short" Margin="70,10,0,10"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/Images/color.png" Opacity="0.7"  Stretch="Fill"></ImageBrush>
+            </StackPanel.Background>
+            <Button Name="Savebtn" Content="Сохранить" Margin="10" Width="100" Height="25" Click="Savebtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

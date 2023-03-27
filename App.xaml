@@ -7,7 +7,7 @@
         <Style TargetType="Button">
             <Setter Property="Button.Background" >
                 <Setter.Value>
-                    <LinearGradientBrush EndPoint="0.5,0.4" StartPoint="0.5,0">
+                    <LinearGradientBrush EndPoint="0.5,0.4" StartPoint="0.5,0.01">
                         <GradientStop Color="#FFD0D0D0"/>
                         <GradientStop Color="#FF073DA5" Offset="1"/>
                     </LinearGradientBrush>
@@ -33,23 +33,60 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <!--<Style.Triggers>
-                <Trigger Property="Button.IsMouseOver"
-             Value="True">
+            <Style.Triggers>
+                <Trigger Property="Button.IsMouseCaptured" Value="True">
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <ThicknessAnimation
-                  From="10,10,10,10" To="10,10,10,10"
-                  Duration="0:0:2"
-                  Storyboard.TargetProperty
-                  ="Margin"/>
+                                <DoubleAnimation  Storyboard.TargetProperty="Opacity" From="1.0" To="0.4" Duration="0:0:0.3"
+                                             AutoReverse="True" />
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
                 </Trigger>
-            </Style.Triggers>-->
-            <!--<EventSetter Event="Button.Click" Handler="Button_Click" />-->
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                </Trigger>
+            </Style.Triggers>
         </Style>
+        <Style BasedOn="{StaticResource {x:Type Button}}"
+           TargetType="Button"
+           x:Key="buttonstyle2">
+            <Setter Property="Button.Background" >
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,0.9" StartPoint="0.5,0.1 ">
+                        <GradientStop Color="#FF70AFA0"/>
+                        <GradientStop Color="#FFD0D0D0" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Button.FontFamily" Value="Andy" />
+            <Setter Property="Button.Foreground" >
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                        <GradientStop Color="White"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="7"
+                                Background="{TemplateBinding Background}">
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <BitmapImage x:Key="House" UriSource=".\Images\House.png" />
     </Application.Resources>
 </Application>

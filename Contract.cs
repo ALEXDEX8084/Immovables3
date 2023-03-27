@@ -15,10 +15,10 @@ namespace Immovables
     public partial class Contract
     {
         public int IDContract { get; set; }
-        public int IDBuilding { get; set; }
-        public int IdEmployee { get; set; }
-        public int IDClient { get; set; }
-        public Nullable<System.DateTime> BeginDate { get; set; }
+        public Nullable<int> IDBuilding { get; set; }
+        public Nullable<int> IDEmployee { get; set; }
+        public Nullable<int> IDClient { get; set; }
+        public System.DateTime BeginDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
     
         public virtual Building Building { get; set; }

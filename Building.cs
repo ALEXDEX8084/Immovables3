@@ -26,8 +26,7 @@ namespace Immovables
         public double ApartmentArea { get; set; }
         public int IDOwner { get; set; }
         public decimal RentPrice { get; set; }
-        public byte Free { get; set; }
-        public byte[] BuildingImage { get; set; }
+        public byte[] Image { get; set; }
     
         public virtual Owner Owner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

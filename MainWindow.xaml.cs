@@ -28,7 +28,7 @@ namespace Immovables
         {
             InitializeComponent();
             ClassFrame.frmObj = frmMain;
-            frmMain.Navigate(new Pages.LoginPage());
+            frmMain.Navigate(new Pages.MenuPage());
         }
 
         private void frmMain_ContentRendered(object sender, EventArgs e)

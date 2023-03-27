@@ -29,11 +29,6 @@ namespace Immovables.Pages
             this.NavigationService.Navigate(new BuildingsPage());
         }
 
-        private void ChangeUser_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new LoginPage());
-        }
-
         private void ToEmployes_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new EmployeesPage());
@@ -42,10 +37,6 @@ namespace Immovables.Pages
         {
             this.NavigationService.Navigate(new OwnersPage());
         }
-        private void ToUsers_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new UsersPage());
-        }
         private void ToContracts_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new ContractsPage());
@@ -53,6 +44,11 @@ namespace Immovables.Pages
         private void ToClients_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new ClientsPage());
+        }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
     }

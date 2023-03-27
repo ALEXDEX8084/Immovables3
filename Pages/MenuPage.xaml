@@ -5,18 +5,37 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Immovables.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="800"
       Title="MenuPage">
-
-    <Grid>
-        <StackPanel HorizontalAlignment="Left">
-            <Button x:Name="ChangeUser" Content="Сменить пользователя" Click="ChangeUser_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
-            <Button x:Name="ToClients" Content="Клиенты" Click="ToClients_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
-            <Button x:Name="ToBuildings" Content="Помещения" Click="ToBuildings_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
-            <Button x:Name="ToEmployes" Content="Сотрудники" Click="ToEmployes_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
-            <Button x:Name="ToOwners" Content="Собственники" Click="ToOwners_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
-            <Button x:Name="ToUsers" Content="Пользователи" Click="ToUsers_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
-            <Button x:Name="ToContracts" Content="Контракты" Click="ToContracts_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Source="/Images/LoginBackGround.jpg" Stretch="Fill" />
+        <StackPanel Grid.Row="0">
+            <StackPanel  Margin="30" Width="350" Height="400">
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="/Images/color.png" Opacity="0.7"  Stretch="Fill"></ImageBrush>
+                </StackPanel.Background>
+                <TextBlock   Text=""/>
+                <Button x:Name="ToClients" Content="Клиенты" Click="ToClients_Click" Width="130" Height="30" Margin="10,40, 10,10"></Button>
+                <Button x:Name="ToBuildings" Content="Помещения" Click="ToBuildings_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
+                <Button x:Name="ToEmployes" Content="Сотрудники" Click="ToEmployes_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
+                <Button x:Name="ToOwners" Content="Собственники" Click="ToOwners_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
+                <Button x:Name="ToContracts" Content="Контракты" Click="ToContracts_Click" Width="130" Height="30" Margin="10,10, 10,10"></Button>
+                <Button x:Name="exit" Click="exit_Click" Width="130" Height="30" Content="Выйти" Margin="10,10, 10,10" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Image Source="/Images/framelog.jpg"  Stretch="Fill"/>
         </StackPanel>
     </Grid>
 </Page>
+
+
+
+         
+
+           
+

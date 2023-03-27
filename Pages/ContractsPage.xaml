@@ -8,25 +8,82 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ContractsPage">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/3b2.jpg" Opacity="0.7"  Stretch="Fill"></ImageBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="8*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
+        <StackPanel Grid.Column="0"  >
+            <TextBlock Text="Поиск"
+                       Width="130"
+                    Height="20"
+                       Margin="30,5" />
+            <TextBox Width="130"
+                    Height="25"
+                     Name="TxtSearch"
+                     TextChanged="TxtSearch_TextChanged"/>
+
+            <TextBlock Text="Способ поиска и сортировки:" Margin="-10,5" Width="164"
+                    Height="20"/>
+            <ComboBox x:Name="CmbFiltrSort"
+                      Height="25"
+                      Width="125"
+                      SelectionChanged="CmbFiltrSort_SelectionChanged"
+                      Margin="0,10,0,10">
+                <ComboBoxItem Content="По адресу"/>
+                <ComboBoxItem Content="По цене аренды(руб.)"/>
+                <ComboBoxItem Content="По площади(м3)"/>
+                <ComboBoxItem Content="По сотруднику"/>
+                <ComboBoxItem Content="По собственнику"/>
+                <ComboBoxItem Content="По арендатору"/>
+                <ComboBoxItem Content="По дате начала аренды"/>
+                <ComboBoxItem Content="По дате окончания аренды"/>
+            </ComboBox>
+            <StackPanel Margin="10,0,0,0">
+                <TextBlock Text="Сортировка по" Margin="10,10,0,0" Width="164"/>
+                <TextBlock Text="возврастанию/убыванию" Margin="10,0,0,10" Width="164"/>
+                <RadioButton Content="В порядке убывания" 
+                             Margin="20,5"
+                             Name="RbUp"
+                             Width="164"
+                             Checked="RbUp_Checked"/>
+                <RadioButton Content="В порядке возрастания"
+                             Margin="20,5"
+                             Name="RbDown"
+                             Width="164"
+                             Checked="RbDown_Checked"/>
+            </StackPanel>
+            <StackPanel>
+                <Button Name="AddButton" Click="AddButton_Click" Content="Добавить" Margin="-10, 30,0,0" Width="125" Height="25"/>
+            </StackPanel>
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/Images/color.png" Opacity="0.8"  Stretch="Fill"></ImageBrush>
+            </StackPanel.Background>
         </StackPanel>
         <ListView Grid.Column="1" Name="ListContracts">
+            <ListView.Background>
+                <ImageBrush ImageSource="/Images/color.png" Opacity="0.8"  Stretch="Fill"></ImageBrush>
+            </ListView.Background>
+            <ListView.ContextMenu>
+                <ContextMenu >
+                    <MenuItem Header="Удалить" Name="DeleteClient" Click="DeleteClient_Click" />
+                    <MenuItem Header="Изменить" Name="editclient" Click="editclient_Click"  />
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.View>
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Employee Information">
-                    <GridViewColumn DisplayMemberBinding="{Binding Path = Buildings.Adress}" Header="Адрес" Width="300"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Buildings.RentPrice}" Width="120">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path = Building.Adress}" Header="Адрес" Width="400"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Building.RentPrice}" Width="120">
                         <GridViewColumnHeader>Цена аренды (руб.)</GridViewColumnHeader>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Buildings.ApartmentArea}" Header="Площадь(м3)" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Employees.SurName}" Header="Сотрудник" Width="120"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Owners.SurName}" Header="Собственник" Width="120"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding  Path =  Clients.SurName}" Header="Арендатор" Width="120"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=BeginDate}" Header="Дата начала аренды" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=EndDate}" Header="Дата окончания аренды" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path = Building.ApartmentArea}" Header="Площадь(м3)" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path = Employee.SurName}" Header="Сотрудник" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path = Building.Owner.SurName}" Header="Собственник" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path = Client.SurName}" Header="Арендатор" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=BeginDate}" Header="Дата начала аренды" Width="auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=EndDate}" Header="Дата окончания аренды" Width="auto"/>
                 </GridView>
             </ListView.View>
         </ListView>

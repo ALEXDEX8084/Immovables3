@@ -16,18 +16,17 @@ using System.Windows.Shapes;
 namespace Immovables.Pages
 {
     /// <summary>
-    /// Interaction logic for LoginPage.xaml
+    /// Interaction logic for BuildingDetailsPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class BuildingDetailsPage : Page
     {
-        public LoginPage()
+        private Building _currentperson = new Building(); //экземпляр добавляемого пользователя
+        public BuildingDetailsPage(Building selectedUser)
         {
             InitializeComponent();
-        }
-
-        private void Enter_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new MenuPage());
+            if (selectedUser != null)
+                _currentperson = selectedUser;
+            DataContext = _currentperson;
         }
     }
 }
